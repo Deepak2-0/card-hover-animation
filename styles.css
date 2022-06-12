@@ -1,0 +1,95 @@
+:root {
+    --clr-netrual-900: hsl(207, 19%, 9%);
+    --clr-netrual-100: hsl(0, 0%, 100%);
+    --clr-accent-400: hsl(142, 90%, 61%);
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+body {
+    display: grid;
+    min-height: 100vh;
+    place-items: center;
+    line-height: 1.6;
+    background: var(--clr-netrual-900);
+    font-family: sans-serif;
+}
+
+.card {
+    color: var(--clr-netrual-100);
+    background-image: url("https://picsum.photos/id/237/200/300");
+    background-size: cover;
+    padding: 10rem 0 0;
+    max-width: 35ch;
+    border-radius: 0.5rem;
+    /* overflow: hidden; */
+
+    transition: transform 500ms ease;
+}
+
+.card:hover {
+  transform: scale(1.1);
+}
+
+.card-content {
+    --padding: 1.5rem;
+    padding: var(--padding);
+    /* background: hsl(0, 0%, 0%/0.5); */
+    background: linear-gradient(hsl(0, 0%, 0% /0), hsl(0, 0%, 0%/ 0.3) 20%, hsl(0, 0%, 0% /1));
+    transform: translateY(65%);
+    transition: transform 500ms ease-in-out;
+}
+
+.card:hover .card-content {
+  transform: translateY(0%);
+}
+
+.card-content > *:not(.card-title) {
+    opacity: 0;
+    transition: opacity 500ms linear;
+}
+
+.card:hover .card-content > *:not(.card-title) {
+  opacity: 1;
+}
+
+.card-title {
+    position: relative;
+    width: max-content;
+}
+
+.card-title::after {
+    content: "";
+    height: 3px;
+    background: var(--clr-accent-400);
+    width: calc(100% + var(--padding));
+    position: absolute;
+    left: calc(var(--padding) * -1);
+    bottom: 0px;
+    transform: scaleX(0);
+    transform-origin: left; /* will make the line from left instead of center */
+    transition: transform 500ms ease-in-out;
+}
+
+.card:hover .card-title::after{
+  transform: scaleX(1);
+}
+
+.button {
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+    color: var(--clr-netrual-900);
+    background-color: var(--clr-accent-400);
+    padding: 0.5rem 1.25rem;
+    border-radius: 0.25rem;
+}
+
+.button:hover,
+.button:focus {
+    background-color: var(--clr-netrual-100);
+}
